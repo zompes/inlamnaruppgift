@@ -1,0 +1,115 @@
+.redCube,
+.redcube {
+  height: 50px;
+  width: 50px;
+  background-color: red;
+  position: absolute;
+  left: 200px;
+  top: 200px;
+}
+
+.redani {
+  animation-name: redCubeattackBlueCube;
+  animation-duration: 0.5s;
+}
+
+
+.redTriangle,
+.redtriangle {
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 50px solid red;
+  animation-name: redTriangleattackBlueCube;
+  animation-duration: 0.5s;
+  position: absolute;
+  top: 200px;
+  left: 149px;
+}
+
+.blueani {
+  animation-name: blueCubeattackRedCube;
+  animation-duration: 0.5s;
+}
+
+.blueCube,
+.bluecube {
+  height: 50px;
+  width: 50px;
+  background-color: blue;
+  position: absolute;
+  right: 200px;
+  top: 200px;
+}
+
+.blueTriangle,
+.bluetriangle {
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 50px solid blue;
+  animation-name: blueTriangleattackRedCube;
+  animation-duration: 0.5s;
+  position: absolute;
+  bottom: 210px;
+  right: 149px;
+}
+
+.spel-plan {
+  margin: 20px auto;
+  background-color: black;
+  position: relative;
+  width: 1000px;
+  height: 460px;
+}
+
+.player {
+  opacity: 0.3;
+  transition: opacity 0.5s
+}
+
+@keyframes redCubeattackBlueCube {
+  from {
+    background-color: red;
+  }
+
+  to {
+    left: 701px;
+    background-color: rgb(255, 255, 255);
+  }
+}
+
+@keyframes blueCubeattackRedCube {
+  from {
+    background-color: blue;
+  }
+
+  to {
+    right: 701px;
+    background-color: rgb(255, 255, 255);
+  }
+}
+
+@keyframes redTriangleattackBlueCube {
+  from {
+    background-color: blue;
+  }
+
+  to {
+    left: 721px;
+    background-color: rgb(255, 255, 255);
+  }
+}
+
+@keyframes blueTriangleattackRedCube {
+  from {
+    background-color: blue;
+  }
+
+  to {
+    right: 721px;
+    background-color: rgb(255, 255, 255);
+  }
+}
