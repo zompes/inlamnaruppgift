@@ -4,6 +4,11 @@ j = window.jQuery
 
 class Player:
   selected = False
+  maxCubeHealth = 50.0
+  currentCubeHealth = 50.0
+  maxTriangleHealth = 30.0
+  currentTriangleHealth = 30.0
+  healthDashes = 5
   def __init__(self, color,spel_plan,shape):
    self.id = 'id' + str(random()).split('.')[1]
    self.color = color
@@ -17,6 +22,46 @@ class Player:
   def animationEnd(self, event):
     j(event.target).removeClass('blueani')
     j(event.target).removeClass('redani')
+
+  def cubeDealDamage(self):
+    cubeMaxDamage = 8
+    cubeMinDamage = 1
+    cubeDamage = (random.randint(cubeMinDamage,cubeMaxDamage))
+    return cubeDamage
+
+  def triangleDealDamage(self):
+    triangleMaxDamage = 15
+    triangleMinDamage = 3
+    triangleDamage = (random.randint(triangleMinDamage, triangleMaxDamage))
+    return triangleDamage
+
+
+  def cubeHealth(self):
+    dashConvert = int(self.maxCubeHealth/self.healthDashes)
+    currentDashes = int(self.currentCubeHealth/dashConvert)
+    remainingHealth = self.healthDashes - currentDashes
+
+    healthDisplay = '-' * currentDashes
+    remainingDisplay = ' ' * remainingHealth
+    percent = str(int((self.currentCubeHealth/self.maxCubeHealth) * 100)) + "%"
+
+    print("|" + healthDisplay +  remainingDisplay + "|")
+    print("              " + percent)
+
+  def triangleHealth(self):
+    dashConvert = int(self.maxTriangleHealth/self.healthDashes)
+    currentDashes = int(self.currentTriangleHealth/dashConvert)
+    remainingHealth = self.healthDashes - currentDashes
+
+    healthDisplay = '-' * currentDashes
+    remainingDisplay = ' ' * remainingHealth
+    percent = str(int((self.currentTriangleHealth/self.maxCubeHealth) * 100)) + "%"
+
+    print("|" + healthDisplay +  remainingDisplay + "|")
+    print("              " + percent)
+
+  def takeDamage(self):
+    if 
 
   def click(self, event):
     if self.selected:
@@ -33,8 +78,7 @@ class Player:
             j(f'.{spelare.color}{spelare.shape}').addClass(f'{spelare.color}ani').on('animationend', self.animationEnd)
             j(f'#{self.spel_plan.id} .player').css('opacity', 0.3)
           else:
-            print('that is a teammate')
-            j(f'#{self.spel_plan.id} .player').css('opacity', 0.3)
+            #j(f'#{self.spel_plan.id} .player').css('opacity', 0.3)
             continue
 
           for s in self.spel_plan.spelar_lista:

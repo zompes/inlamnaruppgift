@@ -21,8 +21,8 @@
   border-left: 25px solid transparent;
   border-right: 25px solid transparent;
   border-bottom: 50px solid red;
-  animation-name: redTriangleattackBlueCube;
-  animation-duration: 0.5s;
+  /*animation-name: redTriangleattackBlueCube;
+  animation-duration: 0.5s;*/
   position: absolute;
   top: 200px;
   left: 149px;
@@ -50,8 +50,8 @@
   border-left: 25px solid transparent;
   border-right: 25px solid transparent;
   border-bottom: 50px solid blue;
-  animation-name: blueTriangleattackRedCube;
-  animation-duration: 0.5s;
+  /*animation-name: blueTriangleattackRedCube;
+  animation-duration: 0.5s;*/
   position: absolute;
   bottom: 210px;
   right: 149px;
