@@ -61,7 +61,7 @@ class Player:
     print("              " + percent)
 
   def takeDamage(self):
-    if 
+    pass
 
   def click(self, event):
     if self.selected:
