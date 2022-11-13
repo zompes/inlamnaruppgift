@@ -2,6 +2,9 @@ from random import random
 from browser import window
 j = window.jQuery
 from SpelPlan import SpelPlan
+
+# INTE KLART, SAKNAR ÅTMINSTONE SPELARLOOPEN OCH NÄTVERK
+
 class Application:
 
     def __init__(self):

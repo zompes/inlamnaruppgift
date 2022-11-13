@@ -9,10 +9,10 @@ class SpelPlan:
         # (that is also an allowed id in html)
         self.id = 'id' + str(random()).split('.')[1]
         # create four different objects
-        self.red_cube = Player('red',self,'cube')
-        self.red_triangle = Player('red', self,'triangle')
-        self.blue_triangle = Player('blue', self,'triangle')
-        self.blue_cube = Player('blue',self,'cube')
+        self.red_cube = Player('red',self,'cube', 50)
+        self.red_triangle = Player('red', self,'triangle', 30)
+        self.blue_triangle = Player('blue', self,'triangle', 30)
+        self.blue_cube = Player('blue',self,'cube', 50)
         self.spelar_lista.append(self.red_cube)
         self.spelar_lista.append(self.red_triangle)
         self.spelar_lista.append(self.blue_cube)
