@@ -60,8 +60,18 @@ class Player:
     print("|" + healthDisplay +  remainingDisplay + "|")
     print("              " + percent)
 
-  def takeDamage(self):
-    pass
+  def cubeTakeDamage(self):
+    if self.cubeHealth == 0:
+      j(f'{self.color} {self.shape} is dead, dont beat a dead corpse.')
+    else:
+      self.cubeHealth - self.cubeDealDamage
+
+
+  def triangleTakeDamage(self):
+    if self.triangleHealth == 0:
+      j(f'{self.color} {self.shape} is dead, dont beat a dead corpse.')
+    else:
+      self.triangleHealth - self.cubeDealDamage
 
   def click(self, event):
     if self.selected:
