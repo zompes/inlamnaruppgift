@@ -1,3 +1,4 @@
+from random import randint
 from random import random
 from browser import window
 j = window.jQuery
@@ -7,10 +8,10 @@ j = window.jQuery
 
 class Player:
   selected = False
-  maxCubeHealth = 50.0
-  currentCubeHealth = 50.0
-  maxTriangleHealth = 30.0
-  currentTriangleHealth = 30.0
+  maxCubeHealth = 50
+  currentCubeHealth = 50
+  maxTriangleHealth = 30
+  currentTriangleHealth = 30
   healthDashes = 5
   def __init__(self, color,spel_plan,shape, health):
    self.id = 'id' + str(random()).split('.')[1]
@@ -34,14 +35,12 @@ class Player:
   def cubeDealDamage(self):
     cubeMaxDamage = 8
     cubeMinDamage = 1
-    cubeDamage = (random.randint(cubeMinDamage,cubeMaxDamage))
-    #return cubeDamage
+    return (randint(cubeMinDamage,cubeMaxDamage))
 
   def triangleDealDamage(self):
     triangleMaxDamage = 15
     triangleMinDamage = 3
-    triangleDamage = (random.randint(triangleMinDamage, triangleMaxDamage))
-    #return triangleDamage
+    return (randint(triangleMinDamage, triangleMaxDamage))
 
 
   def cubeHealth(self):
@@ -71,9 +70,9 @@ class Player:
   def TakeDamage(self):
     # fungerar inte för tillfället
     if self.shape == 'cube':
-      self.health - self.cubeDealDamage
+      self.health - self.cubeDealDamage()
     else:
-      self.health - self.triangleDealDamage
+      self.health - self.triangleDealDamage()
     #if self.cubeHealth == 0:
       #j(f'{self.color} {self.shape} is dead, dont beat a dead corpse.')
     #else:
@@ -97,11 +96,16 @@ class Player:
           if spelare.color is not self.color and spelare.selected:
           # put attack here
             # fungerar inte för tillfället
-            print(f'{spelare.color} {spelare.shape} hit {self.color} {self.shape} for {self.cubeDealDamage}')
-            
-
+            if spelare.shape == 'cube':
+              self.health - self.cubeDealDamage()
+              print(f'{spelare.color} {spelare.shape} hit {self.color} {self.shape} for {self.cubeDealDamage()} damage')
+              print(f'Now {self.color} {self.shape} has {self.health} health left')
+            else:
+              self.health - self.triangleDealDamage()
+              print(print(f'{spelare.color} {spelare.shape} hit {self.color} {self.shape} for {self.triangleDealDamage()}'))
+              print(f'Now {self.color} {self.shape} has {self.health} health left')
             #j(f'.{spelare.color}{spelare.shape}').removeClass(f'{spelare.color}ani')
-            print(f'{spelare.color} {spelare.shape} is hitting {self.color} {self.shape}')
+            #print(f'{spelare.color} {spelare.shape} is hitting {self.color} {self.shape}')
             j(f'.{spelare.color}{spelare.shape}').addClass(f'{spelare.color}ani').on('animationend', self.animationEnd)
             j(f'#{self.spel_plan.id} .player').css('opacity', 0.3)
           else:
