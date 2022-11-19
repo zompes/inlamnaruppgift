@@ -20,10 +20,10 @@ class Player:
    self.bind_events()
    self.shape = shape
    self.health = self.maxCubeHealth
-   if self.shape == 'cube':
-    self.health = 50
-   else:
-    self.health = 30
+   #if self.shape == 'cube':
+    #self.health = 50
+   #else:
+    #self.health = 30
   
   def bind_events(self):
     j('body').on('click', f'#{self.id}', self.click)
@@ -97,13 +97,15 @@ class Player:
           # put attack here
             # fungerar inte för tillfället
             if spelare.shape == 'cube':
-              self.health - self.cubeDealDamage()
-              print(f'{spelare.color} {spelare.shape} hit {self.color} {self.shape} for {self.cubeDealDamage()} damage')
-              print(f'Now {self.color} {self.shape} has {self.health} health left')
+              dmg = self.cubeDealDamage()
+              self.currentCubeHealth -= dmg
+              print(f'{spelare.color} {spelare.shape} hit {self.color} {self.shape} for {dmg} damage')
+              print(f'Now {self.color} {self.shape} has {self.currentCubeHealth} health left')
             else:
-              self.health - self.triangleDealDamage()
-              print(print(f'{spelare.color} {spelare.shape} hit {self.color} {self.shape} for {self.triangleDealDamage()}'))
-              print(f'Now {self.color} {self.shape} has {self.health} health left')
+              dmg = self.triangleDealDamage()
+              self.currentTriangleHealth -= dmg
+              print(print(f'{spelare.color} {spelare.shape} hit {self.color} {self.shape} for {dmg}'))
+              print(f'Now {self.color} {self.shape} has {self.currentTriangleHealth} health left')
             #j(f'.{spelare.color}{spelare.shape}').removeClass(f'{spelare.color}ani')
             #print(f'{spelare.color} {spelare.shape} is hitting {self.color} {self.shape}')
             j(f'.{spelare.color}{spelare.shape}').addClass(f'{spelare.color}ani').on('animationend', self.animationEnd)
