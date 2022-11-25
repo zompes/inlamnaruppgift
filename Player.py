@@ -5,6 +5,10 @@ j = window.jQuery
 
 # INTE KLART, SAKNAR ÅTMINSTONE SPELARLOOPEN OCH NÄTVERK
 
+#players = [red, blue]
+
+#for player in players:
+  #pass
 
 class Player:
   selected = False

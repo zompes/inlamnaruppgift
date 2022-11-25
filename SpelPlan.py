@@ -27,4 +27,5 @@ class SpelPlan:
                 {self.blue_cube}
                 {self.blue_triangle}
             </div>
+            <div class="player-name"></div>
         """
