@@ -17,17 +17,18 @@ class Player:
   maxTriangleHealth = 30
   currentTriangleHealth = 30
   healthDashes = 5
+
   def __init__(self, color,spel_plan,shape, health):
    self.id = 'id' + str(random()).split('.')[1]
    self.color = color
-   self.spel_plan = spel_plan
+   self.game_board = spel_plan
    self.bind_events()
    self.shape = shape
    self.health = self.maxCubeHealth
-   #if self.shape == 'cube':
-    #self.health = 50
-   #else:
-    #self.health = 30
+  #  if self.shape == 'cube':
+  #   self.health = 50
+  #  else:
+  #   self.health = 30
   
   def bind_events(self):
     j('body').on('click', f'#{self.id}', self.click)
@@ -92,11 +93,11 @@ class Player:
   def click(self, event):
     if self.selected:
       self.selected = False
-      j(f'#{self.spel_plan.id} .player').css('opacity', 0.3)
+      j(f'#{self.game_board.id} .player').css('opacity', 0.3)
     else:
       self.selected = True
     # Dim rest of shapes except the user clicked on
-      for spelare in self.spel_plan.spelar_lista:
+      for spelare in self.game_board.spelar_lista:
           if spelare.color is not self.color and spelare.selected:
           # put attack here
             # fungerar inte för tillfället
@@ -113,20 +114,20 @@ class Player:
             #j(f'.{spelare.color}{spelare.shape}').removeClass(f'{spelare.color}ani')
             #print(f'{spelare.color} {spelare.shape} is hitting {self.color} {self.shape}')
             j(f'.{spelare.color}{spelare.shape}').addClass(f'{spelare.color}ani').on('animationend', self.animationEnd)
-            j(f'#{self.spel_plan.id} .player').css('opacity', 0.3)
+            j(f'#{self.game_board.id} .player').css('opacity', 0.3)
           else:
             #j(f'#{self.spel_plan.id} .player').css('opacity', 0.3)
             continue
 
-          for s in self.spel_plan.spelar_lista:
+          for s in self.game_board.spelar_lista:
             s.selected = False
           break
 
-      j(f'#{self.spel_plan.id} .player').css('opacity', 1)
+      j(f'#{self.game_board.id} .player').css('opacity', 1)
       if self.shape=='cube':
-        j(f'#{self.spel_plan.id} .{self.color}Triangle').css('opacity', 0.3)
+        j(f'#{self.game_board.id} .{self.color}Triangle').css('opacity', 0.3)
       elif self.shape=='triangle':
-        j(f'#{self.spel_plan.id} .{self.color}Cube').css('opacity', 0.3)
+        j(f'#{self.game_board.id} .{self.color}Cube').css('opacity', 0.3)
 
       # Undim me
       j(f'#{self.id}').css('opacity', 1)
