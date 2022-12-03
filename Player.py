@@ -1,6 +1,7 @@
 from random import randint
 from random import random
 from browser import window
+from network_brython import send
 j = window.jQuery
 
 # INTE KLART, SAKNAR ÅTMINSTONE SPELARLOOPEN OCH NÄTVERK
@@ -106,6 +107,8 @@ class Player:
               self.currentCubeHealth -= dmg
               print(f'{spelare.color} {spelare.shape} hit {self.color} {self.shape} for {dmg} damage')
               print(f'Now {self.color} {self.shape} has {self.currentCubeHealth} health left')
+
+              send({"type": "ATTACK", "attacker": self.color})
             else:
               dmg = self.triangleDealDamage()
               self.currentTriangleHealth -= dmg

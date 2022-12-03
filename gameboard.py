@@ -1,7 +1,7 @@
 from random import random
 from Player import Player
 
-class SpelPlan:
+class GameBoard:
     spelar_lista = []
     # constructor
     def __init__(self):
